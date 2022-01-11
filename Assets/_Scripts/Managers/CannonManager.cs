@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonManager : MonoBehaviour
+public class CannonManager : SingletonBase<CannonManager>
 {
     #region Variables
     #endregion
