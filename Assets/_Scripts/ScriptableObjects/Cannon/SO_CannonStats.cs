@@ -6,4 +6,5 @@ using UnityEngine;
 public class SO_CannonStats : ScriptableObject
 {
     public float turnSpeed;
+    public float fireRate;
 }

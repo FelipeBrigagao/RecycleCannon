@@ -16,7 +16,23 @@ public class CollectorInteraction : MonoBehaviour
     #region Methods
     public void CheckInteraction()
     {
-        RaycastHit[] interaction = Physics.BoxCastAll(transform.position + _interactionBoxOffset, _interactionBoxSize, transform.forward);
+        RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _interactionBoxOffset, _interactionBoxSize / 2, transform.forward, Quaternion.identity, _interactionBoxSize.z);
+        
+        if(interactions.Length > 0)
+        {
+            Interactable interactable;
+
+            foreach (RaycastHit hit in interactions)
+            {
+                interactable = hit.transform.GetComponent<Interactable>();
+
+                if (interactable)
+                {
+                    interactable.Interact();
+                    return;
+                }
+            }
+        }
     }
 
     private void OnDrawGizmos()

@@ -57,6 +57,7 @@ public class CollectorManager : SingletonBase<CollectorManager>
     public void DisposeTrash()
     {
         StopCarrying();
+        _trash = null;
     }
 
     #endregion

@@ -20,9 +20,4 @@ public class TrashInteractable : Interactable
     #endregion
 }
 
-public enum TrashType
-{
-    ORGANIC,
-    METAL,
-    PLASTIC
-}
+

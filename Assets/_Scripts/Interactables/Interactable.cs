@@ -6,7 +6,7 @@ public abstract class Interactable : MonoBehaviour
 {
     #region Variables
     [Header("Interaction Icon Reference")]
-    [SerializeField] private GameObject _interactionIcon;
+    [SerializeField] protected GameObject _interactionIcon;
     [SerializeField] private string _interactionTag;
 
     #endregion

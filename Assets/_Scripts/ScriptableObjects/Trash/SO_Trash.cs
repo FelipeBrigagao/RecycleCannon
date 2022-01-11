@@ -12,7 +12,14 @@ public class SO_Trash : ScriptableObject
     public GameObject carryingPrefab;
     public TrashSize trashSize;
     public Sprite trashIcon;
+    public SO_Ammo ammo;
 
+}
+public enum TrashType
+{
+    ORGANIC,
+    METAL,
+    PLASTIC
 }
 
 public enum TrashSize
