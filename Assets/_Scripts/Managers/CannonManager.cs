@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class CannonManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    #region Variables
+    #endregion
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    #region Unity Methods
+    #endregion
+
+    #region Methods
+    #endregion
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColectorInput : MonoBehaviour
+public class CollectorManager : MonoBehaviour
 {
     #region Variables
     #endregion
@@ -12,5 +12,4 @@ public class ColectorInput : MonoBehaviour
 
     #region Methods
     #endregion
-
 }
