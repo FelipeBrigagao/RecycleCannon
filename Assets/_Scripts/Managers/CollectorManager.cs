@@ -6,13 +6,11 @@ using UnityEngine;
 public class CollectorManager : SingletonBase<CollectorManager>
 {
     #region Variables
-    [Header("Collector reference")]
-    [SerializeField] private GameObject _currentCollector;
-    [SerializeField] public SO_Trash _trash { get; private set;}
-    public bool collectorIsDead { get; private set;}
-    public bool collectorGettingAttacked { get; private set;}
-
-
+    public SO_Trash _currentTrashCarrying { get; private set;}
+    public GameObject _currentCollector { get; private set; }
+    public bool collectorIsInvulnerable { get; private set;}
+    public bool canMove { get; private set;}
+    public bool isDead { get; private set;}
     #endregion
 
     #region Events
@@ -20,7 +18,9 @@ public class CollectorManager : SingletonBase<CollectorManager>
 
     public void CollectorDied()
     {
-        collectorIsDead = true;
+        canMove = false;
+        isDead = true;
+        GameManager.Instance.GameOver();
         OnCollectorDeath?.Invoke();
     }
 
@@ -47,20 +47,33 @@ public class CollectorManager : SingletonBase<CollectorManager>
     #endregion
 
     #region Unity Methods
+    protected override void Awake()
+    {
+        base.Awake();
+        canMove = true;
+    }
     #endregion
 
+
+
     #region Methods
+
+    public void SetCurrentCollector(GameObject currentCollector)
+    {
+        _currentCollector = currentCollector;
+    }
+
     public void SetCarryingTrash(SO_Trash trash)
     {
-        if(_trash == null)
+        if(_currentTrashCarrying == null)
         {
-            _trash = trash;
+            _currentTrashCarrying = trash;
             StartCarrying();
 
         }else
         {
             DropTrash();
-            _trash = trash;
+            _currentTrashCarrying = trash;
             StartCarrying();
         }
     }
@@ -68,7 +81,34 @@ public class CollectorManager : SingletonBase<CollectorManager>
     public void DisposeTrash()
     {
         StopCarrying();
-        _trash = null;
+        _currentTrashCarrying = null;
+    }
+
+    public void CollectorBeingAttacked(float attackDuration)
+    {
+        StartCoroutine(InvulnerabilityCountdown(attackDuration));
+    }
+    IEnumerator InvulnerabilityCountdown(float duration)
+    {
+        DisposeTrash();
+        Rigidbody rb = _currentCollector.GetComponent<Rigidbody>();
+        Collider collider = _currentCollector.GetComponent<Collider>();
+        collider.isTrigger = true;
+        rb.isKinematic = true;
+        canMove = false;
+        collectorIsInvulnerable = true;
+
+        yield return new WaitForSeconds(duration);
+        if (!CollectorManager.Instance.isDead)
+        {
+            collider.isTrigger = false;
+            rb.isKinematic = false;
+            canMove = true; 
+            yield return new WaitForSeconds(duration);
+            collectorIsInvulnerable = false;
+
+        }
+
     }
 
     #endregion

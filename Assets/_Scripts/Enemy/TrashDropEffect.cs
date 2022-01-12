@@ -8,6 +8,7 @@ public class TrashDropEffect : MonoBehaviour
     [Header("Enemy references")]
     [SerializeField] private SO_Enemy _enemyStats;
     [SerializeField] private EnemyHealth _enemyHealth;
+    [SerializeField] private Transform _dropPoint;
 
     private GameObject drop;
     #endregion
@@ -16,12 +17,14 @@ public class TrashDropEffect : MonoBehaviour
     private void OnEnable()
     {
         _enemyHealth.OnEnemyDeath += EnemyDied;
+        GameManager.Instance.OnGameOver += GameEnded;
     }
     private void OnDisable()
     {
         _enemyHealth.OnEnemyDeath -= EnemyDied;
+        GameManager.Instance.OnGameOver -= GameEnded;
     }
-    private void Start()
+    private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
         StartCoroutine(WalkingTrashDrop());
@@ -62,9 +65,13 @@ public class TrashDropEffect : MonoBehaviour
 
     private void DropTrash()
     {
-        Instantiate(drop, this.transform.position, Quaternion.identity);
+        Instantiate(drop, _dropPoint.position, Quaternion.identity);
     }
 
+    private void GameEnded()
+    {
+        StopAllCoroutines();
+    }
 
     #endregion
 

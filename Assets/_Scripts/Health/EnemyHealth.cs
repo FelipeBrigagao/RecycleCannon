@@ -37,7 +37,6 @@ public class EnemyHealth : HealthBase
     protected override void Die()
     {
         EnemyDied();
-
         base.Die();
     }
 

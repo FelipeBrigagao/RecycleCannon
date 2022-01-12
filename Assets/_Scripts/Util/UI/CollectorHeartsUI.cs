@@ -8,7 +8,7 @@ public class CollectorHeartsUI : MonoBehaviour
     [Header("Hearts UI references")]
     [SerializeField] private Transform _heartsHolder;
     [SerializeField] private GameObject _heartPrefab;
-    private List<GameObject> _hearts;
+    private List<GameObject> _hearts = new List<GameObject>();
     #endregion
 
     #region Unity Methods

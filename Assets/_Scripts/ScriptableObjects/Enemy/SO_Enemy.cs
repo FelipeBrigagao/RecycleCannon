@@ -10,7 +10,10 @@ public class SO_Enemy : ScriptableObject
     public float stopDistance;
     public TrashType enemyTrashType;
     public float spawnTime;
+
+    public float attackRange;
     public int damage;
+    public float attackDuration;
 
     public SO_Trash smallTrashDrop;
     public SO_Trash largeTrashDrop;

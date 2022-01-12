@@ -8,7 +8,7 @@ public class CollectorHealth : HealthBase
     [Header("Collector references")]
     [SerializeField] private SO_CollectorStats _collectorStats;
     [SerializeField] private CollectorHeartsUI _heartsUI;
-    public bool _isInvulnerable { get; private set; }
+
     #endregion
 
     #region Unity Methods
@@ -35,8 +35,10 @@ public class CollectorHealth : HealthBase
 
     protected override void Die()
     {
-        base.Die();
         CollectorManager.Instance.CollectorDied();
+        base.Die();
     }
+
+
     #endregion
 }

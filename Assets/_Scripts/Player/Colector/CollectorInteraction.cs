@@ -16,20 +16,23 @@ public class CollectorInteraction : MonoBehaviour
     #region Methods
     public void CheckInteraction()
     {
-        RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _interactionBoxOffset, _interactionBoxSize / 2, transform.forward, Quaternion.identity, _interactionBoxSize.z);
-        
-        if(interactions.Length > 0)
+        if (CollectorManager.Instance.canMove && !GameManager.Instance.gameIsOver)
         {
-            Interactable interactable;
-
-            foreach (RaycastHit hit in interactions)
+            RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _interactionBoxOffset, _interactionBoxSize / 2, transform.forward, Quaternion.identity, _interactionBoxSize.z);
+        
+            if(interactions.Length > 0)
             {
-                interactable = hit.transform.GetComponent<Interactable>();
+                Interactable interactable;
 
-                if (interactable)
+                foreach (RaycastHit hit in interactions)
                 {
-                    interactable.Interact();
-                    return;
+                    interactable = hit.transform.GetComponent<Interactable>();
+
+                    if (interactable)
+                    {
+                        interactable.Interact();
+                        return;
+                    }
                 }
             }
         }

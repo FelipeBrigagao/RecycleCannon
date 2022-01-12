@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: OrganicEnemy
   m_EditorClassIdentifier: 
   maxHealth: 3
-  speed: 5
-  stopDistance: 2
+  speed: 3.5
+  stopDistance: 3
   enemyTrashType: 0
   spawnTime: 3
+  attackRange: 2
+  damage: 1
+  attackDuration: 2
   smallTrashDrop: {fileID: 11400000, guid: 921b298e065907841b5e5c4e73c84fa5, type: 2}
-  largeTrashDrop: {fileID: 0}
-  dropTime: 6
+  largeTrashDrop: {fileID: 11400000, guid: 130f5f179539e954d9696e531b189bfb, type: 2}
+  dropTime: 7
   largeDropPossibility: 20
   deathDropAmount: 2

@@ -9,7 +9,7 @@ public class CollectorCarrying : MonoBehaviour
     [SerializeField] private Transform _carryingPoint;
     [SerializeField] private Transform _dropingPoint;
 
-    private GameObject _trash;
+    private GameObject _trashCarryingUI;
 
     private CollectorManager _collectorManager;
     #endregion
@@ -39,19 +39,19 @@ public class CollectorCarrying : MonoBehaviour
     #region Methods
     private void StartCarrying()
     {
-        _trash = Instantiate(_collectorManager._trash.carryingPrefab, _carryingPoint.position, Quaternion.LookRotation(transform.forward), _carryingPoint);
+        _trashCarryingUI = Instantiate(_collectorManager._currentTrashCarrying.carryingPrefab, _carryingPoint.position, Quaternion.LookRotation(transform.forward), _carryingPoint);
     }
 
     private void StopCarrying()
     {
-        if (_trash != null)
-            Destroy(_trash.gameObject);
+        if (_trashCarryingUI != null)
+            Destroy(_trashCarryingUI.gameObject);
     }
 
     private void DropTrash()
     {
         StopCarrying();
-        Instantiate(_collectorManager._trash.interactablePrefab, _dropingPoint.position, Quaternion.identity);
+        Instantiate(_collectorManager._currentTrashCarrying.interactablePrefab, _dropingPoint.position, Quaternion.identity);
     }
 
     #endregion

@@ -14,11 +14,11 @@ public class GarbageCollectorInteractable : Interactable
     #region Methods
     public override void Interact()
     {
-        if(CollectorManager.Instance._trash != null)
+        if(CollectorManager.Instance._currentTrashCarrying != null)
         {
-            if(CollectorManager.Instance._trash.trashType == _collectorType)
+            if(CollectorManager.Instance._currentTrashCarrying.trashType == _collectorType)
             {
-                CannonManager.Instance.ReloadCannon(CollectorManager.Instance._trash);
+                CannonManager.Instance.ReloadCannon(CollectorManager.Instance._currentTrashCarrying);
                 CollectorManager.Instance.DisposeTrash();
             }
             else
