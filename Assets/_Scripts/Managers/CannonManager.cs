@@ -24,7 +24,7 @@ public class CannonManager : SingletonBase<CannonManager>
     public void ReloadCannon(SO_Trash trash)
     {
         Reload(trash.ammo);
-        //alterar as coisas do uimanager
+        //alterar as coisas do uimanager, quantide de tiros e tipo de tiro
     }
 
     #endregion

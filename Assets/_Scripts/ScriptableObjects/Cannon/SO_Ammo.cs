@@ -12,5 +12,5 @@ public class SO_Ammo : ScriptableObject
     public float bulletMaxDistance;
     public int bulletDamage;
     public int ammoAmount;
-    public Sprite ammoIcon;
+    public Sprite ammoTypeIcon;
 }

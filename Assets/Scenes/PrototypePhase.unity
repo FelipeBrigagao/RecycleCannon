@@ -647,6 +647,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295527599}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &303452172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5809411902721109770, guid: 20c19edd4fb1e4644a137a0f1e4f0bf3, type: 3}
+  m_PrefabInstance: {fileID: 5809411904393691557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &303452173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303452172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902a7f411a0d19f40b8a7d30a6f58a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 0
+  _destroyOnDeath: 0
+  _collectorStats: {fileID: 0}
+  _heartsUI: {fileID: 0}
 --- !u!1001 &399687239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1572,17 +1593,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364559115}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1431555080 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1431555080, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
-  m_PrefabInstance: {fileID: 5429414546961831677}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f36c78d5d1989964faa2efc83c4f7060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1624338711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,22 +2261,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1431555082, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1431555084, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
       propertyPath: _joyStick
       value: 
       objectReference: {fileID: 2063483333}
-    - target: {fileID: 3425474128366022697, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1431555080}
-    - target: {fileID: 3425474128366022697, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Shoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 3425474128366022697, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CannonShoot, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 5429414548348885749, guid: df734aa35b8373c4bb1add13e00d7264, type: 3}
       propertyPath: m_RootOrder
       value: 5

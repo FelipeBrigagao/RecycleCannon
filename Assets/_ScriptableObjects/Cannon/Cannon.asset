@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cannon
   m_EditorClassIdentifier: 
   turnSpeed: 80
-  fireRate: 3
+  fireRate: 0.5

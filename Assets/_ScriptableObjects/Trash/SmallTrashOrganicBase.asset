@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7692a0659d88f3d49bd983418c1b950a, type: 3}
-  m_Name: TrashPlasticBase
+  m_Name: SmallTrashOrganicBase
   m_EditorClassIdentifier: 
-  trashType: 2
-  interactablePrefab: {fileID: 3675875188272071224, guid: 2fc9f446f8ddb734f9d6c2a016784420, type: 3}
-  carryingPrefab: {fileID: 1635307000841481341, guid: 2f2cad4538c63d9418478e16d72887d8, type: 3}
+  trashType: 0
+  interactablePrefab: {fileID: 6501285796611265933, guid: 3b9030ae74e0431448670c663c76f7ae, type: 3}
+  carryingPrefab: {fileID: 3395828985407921147, guid: 587382e2ecb08b544bc9e18023a5ff41, type: 3}
   trashSize: 0
   trashIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  ammo: {fileID: 11400000, guid: 45f8e564e5ead9b41a56a04b099fce6b, type: 2}
+  ammo: {fileID: 11400000, guid: 29fb6cd0b5e78284ab34dca64dbb965e, type: 2}

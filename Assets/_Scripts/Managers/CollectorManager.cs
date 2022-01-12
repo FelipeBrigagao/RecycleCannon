@@ -9,6 +9,9 @@ public class CollectorManager : SingletonBase<CollectorManager>
     [Header("Collector reference")]
     [SerializeField] private GameObject _currentCollector;
     [SerializeField] public SO_Trash _trash { get; private set;}
+    public bool collectorIsDead { get; private set;}
+    public bool collectorGettingAttacked { get; private set;}
+
 
     #endregion
 
@@ -60,5 +63,9 @@ public class CollectorManager : SingletonBase<CollectorManager>
         _trash = null;
     }
 
+    public void CollectorDied()
+    {
+        collectorIsDead = true;
+    }
     #endregion
 }
