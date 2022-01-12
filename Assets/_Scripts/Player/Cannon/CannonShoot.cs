@@ -7,9 +7,9 @@ public class CannonShoot : MonoBehaviour
     #region Variables
     [Header("Cannon references")]
     [SerializeField] private SO_CannonStats _cannonStats;
-    [SerializeField] private Transform _shotPosition;
-    private SO_Ammo _ammo;
-    private int _shots;
+    [SerializeField] private Transform _shootPosition;
+    [SerializeField] private SO_Ammo _ammo;
+    [SerializeField]private int _shots;
     private float _nextShot = 0;
     #endregion
 
@@ -27,12 +27,16 @@ public class CannonShoot : MonoBehaviour
     #region Methods
     public void Shoot()
     {
-        if(_shots > 0 && Time.deltaTime >=_nextShot)
+        if(_shots > 0 && Time.time >=_nextShot)
         {
-            Instantiate(_ammo.bulletPrefab, _shotPosition.position, Quaternion.identity);
+            Instantiate(_ammo.bulletPrefab, _shootPosition.position, Quaternion.LookRotation(transform.forward));
             _shots--;
-            _nextShot = Time.deltaTime + _cannonStats.fireRate;
+            _nextShot = Time.time + _cannonStats.fireRate;
             //cada vez que atira atualiza o uimanager
+        }
+        else
+        {
+            Debug.Log($"Não atirou, \n nextShot:{_nextShot} \n time: {Time.time}");
         }
     }
 

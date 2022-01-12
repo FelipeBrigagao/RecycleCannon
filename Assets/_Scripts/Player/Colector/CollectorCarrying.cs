@@ -39,7 +39,7 @@ public class CollectorCarrying : MonoBehaviour
     #region Methods
     private void StartCarrying()
     {
-        _trash = Instantiate(_collectorManager._trash.carryingPrefab, _carryingPoint.position, Quaternion.identity, _carryingPoint);
+        _trash = Instantiate(_collectorManager._trash.carryingPrefab, _carryingPoint.position, Quaternion.LookRotation(transform.forward), _carryingPoint);
     }
 
     private void StopCarrying()

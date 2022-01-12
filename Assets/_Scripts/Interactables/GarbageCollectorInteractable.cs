@@ -23,6 +23,7 @@ public class GarbageCollectorInteractable : Interactable
             }
             else
             {
+                Debug.Log("Wrong collector");
                 //pisca o interact vermelho e faz um barulho de negativo
             }
         }

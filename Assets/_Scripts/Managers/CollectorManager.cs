@@ -8,7 +8,7 @@ public class CollectorManager : SingletonBase<CollectorManager>
     #region Variables
     [Header("Collector reference")]
     [SerializeField] private GameObject _currentCollector;
-    public SO_Trash _trash { get; private set;}
+    [SerializeField] public SO_Trash _trash { get; private set;}
 
     #endregion
 

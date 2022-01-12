@@ -9,7 +9,8 @@ public class SO_Ammo : ScriptableObject
     public GameObject bulletPrefab;
     public TrashType bulletType;
     public float bulletSpeed;
-    public float bulletLifespawn;
+    public float bulletMaxDistance;
+    public int bulletDamage;
     public int ammoAmount;
     public Sprite ammoIcon;
 }

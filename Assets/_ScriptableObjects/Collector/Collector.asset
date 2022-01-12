@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Collector
   m_EditorClassIdentifier: 
   health: 3
-  speed: 5
+  speed: 7
   turnDamp: 10

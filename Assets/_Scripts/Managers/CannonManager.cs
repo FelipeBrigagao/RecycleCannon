@@ -8,13 +8,16 @@ public class CannonManager : SingletonBase<CannonManager>
     #region Variables
     #endregion
 
-    #region Unity Methods
+    #region Events
     public event Action<SO_Ammo> OnReload;
 
     public void Reload(SO_Ammo ammo)
     {
         OnReload?.Invoke(ammo);
     }
+    #endregion
+
+    #region Unity Methods
     #endregion
 
     #region Methods
