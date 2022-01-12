@@ -16,6 +16,14 @@ public class CollectorManager : SingletonBase<CollectorManager>
     #endregion
 
     #region Events
+    public event Action OnCollectorDeath;
+
+    public void CollectorDied()
+    {
+        collectorIsDead = true;
+        OnCollectorDeath?.Invoke();
+    }
+
     public event Action OnStartCarrying;
 
     public void StartCarrying()
@@ -63,9 +71,5 @@ public class CollectorManager : SingletonBase<CollectorManager>
         _trash = null;
     }
 
-    public void CollectorDied()
-    {
-        collectorIsDead = true;
-    }
     #endregion
 }

@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6501285796611265939}
   - component: {fileID: 6501285796611265938}
   - component: {fileID: 1822416336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrashInteractableOrganicBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
