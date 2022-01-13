@@ -14,6 +14,7 @@ public class GameManager : SingletonBase<GameManager>
 
     public void GameOver()
     {
+        gameIsOver = true;
         OnGameOver?.Invoke();
     }
     #endregion

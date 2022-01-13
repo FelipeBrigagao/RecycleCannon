@@ -18,12 +18,16 @@ public class WallHealth : HealthBase
     protected override void HurtReaction()
     {
         base.HurtReaction();
+        Debug.Log("Wall hitted");
+
         //tira vida da ui
         //faz som de batida num muro
     }
 
     protected override void Die()
     {
+        Debug.Log("Wall breaked");
+        GameManager.Instance.GameOver();
         base.Die();
         //quebra o muro
     }

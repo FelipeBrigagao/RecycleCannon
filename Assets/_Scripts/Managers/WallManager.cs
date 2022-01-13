@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallManager : SingletonBase<WallManager>
 {
     #region Variables
-    public GameObject currentWall;
+    public GameObject currentWall { get; private set;}
     private Wall _wall;
     #endregion
 
@@ -18,6 +18,11 @@ public class WallManager : SingletonBase<WallManager>
     #endregion
 
     #region Methods
+    public void SetCurrentWall(GameObject currentWall)
+    {
+        this.currentWall = currentWall;
+    }
+
     public Transform GetWallAttackPoint()
     {
         return _wall.GetRandomAttackPoint();

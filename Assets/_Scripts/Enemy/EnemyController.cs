@@ -3,50 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EnemyControllerBase
 {
     #region Variables
-    [Header("Enemy references")]
-    [SerializeField] private SO_Enemy _enemyStats;
-    [SerializeField] private GameObject _destination;
-    [SerializeField] private EnemyHealth _enemyHealth;
-    [Header("Enemy attack references")]
     [SerializeField] private GameObject _currentCollector;
-    [SerializeField] private Transform _wallAttackPoint;
+    [SerializeField] private GameObject _currentWall;
     [SerializeField] private string _collectorTag;
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private Transform _eatPoint;
     [SerializeField] private Transform _spitPoint;
 
-    private NavMeshAgent _enemyAgent;
-
-    private bool _canMove;
-
     #endregion
 
     #region Unity Methods
-    private void OnEnable()
+    protected override void Start()
     {
-        GameManager.Instance.OnGameOver += StopEnemy;
-        _enemyHealth.OnEnemyDeath += StopEnemy;
-
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.OnGameOver -= StopEnemy;
-        _enemyHealth.OnEnemyDeath -= StopEnemy;
-
-    }
-    private void Start()
-    {
-        _canMove = true;
-        WallManager.Instance.GetWallAttackPoint();
-        _destination = _wallAttackPoint.gameObject;
+        _wallAttackPoint = WallManager.Instance.GetWallAttackPoint();
         _currentCollector = CollectorManager.Instance._currentCollector;
-        _enemyAgent = GetComponent<NavMeshAgent>();
-        _enemyAgent.speed = _enemyStats.speed;
-        _enemyAgent.stoppingDistance = _enemyStats.stopDistance;
+        _currentWall = WallManager.Instance.currentWall;
+        base.Start();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,52 +40,50 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (_canMove)
-        {
-            MoveToTarget();
-            CheckAttack();
-        }
-    }
     #endregion
 
     #region Methods
-    private void MoveToTarget()
+    protected override void MoveToTarget()
     {
-        if(_destination != null)
-        {
-            _enemyAgent.SetDestination(_destination.transform.position);
-        }
+        base.MoveToTarget();
     }
 
-    private void CheckAttack()
+    protected override void CheckAttack()
     {
+        base.CheckAttack();
+
         if (Physics.CheckSphere(transform.position, _enemyStats.attackRange, _playerLayer) && !CollectorManager.Instance.collectorIsInvulnerable)
         {
-            CollectorHealth collectorHealth = _currentCollector.GetComponent<CollectorHealth>();
+            HealthBase health = _currentCollector.GetComponent<HealthBase>();
 
-            if (collectorHealth)
+            if (health)
             {
-                StartCoroutine(EatAndSpitCollector(collectorHealth));
+                StartCoroutine(EatAndSpitCollector(health));
+            }
+
+        }else if (Physics.CheckSphere(transform.position, _enemyStats.attackRange, _wallLayer))
+        {
+            HealthBase health = _currentWall.GetComponent<HealthBase>();
+
+            if (health)
+            {
+                health.TakeDamage(_enemyStats.damage);
             }
         }
     }
 
-    private void StopEnemy()
+    protected override void StopEnemy()
     {
-        _canMove = false;
-        _enemyAgent.isStopped = true;
-
+        base.StopEnemy();
     }
 
-    IEnumerator EatAndSpitCollector(CollectorHealth colectorHealth)
+    IEnumerator EatAndSpitCollector(HealthBase health)
     {
         _canMove = false;
         _enemyAgent.velocity = Vector3.zero;
         _currentCollector.GetComponent<CollectorMovementBase>().CollectorBeingAttacked(_enemyStats.attackDuration);
         _currentCollector.transform.position = _eatPoint.position;
-        colectorHealth.TakeDamage(_enemyStats.damage);
+        health.TakeDamage(_enemyStats.damage);
         yield return new WaitForSeconds(_enemyStats.attackDuration);
         if (!CollectorManager.Instance.isDead)
         {
