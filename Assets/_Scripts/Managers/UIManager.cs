@@ -7,7 +7,11 @@ public class UIManager : SingletonBase<UIManager>
     #region Variables
     public FixedJoystick _moveCollectorJoystick { get; private set; }
     public FixedJoystick _moveCannonJoystick { get; private set; }
+
     private CollectorHeartsUI _collectorHeartsUI;
+
+    private HealthBar _wallHealthBar;
+
     #endregion
 
     #region Unity Methods
@@ -33,6 +37,23 @@ public class UIManager : SingletonBase<UIManager>
         _moveCollectorJoystick = collector;
         _moveCannonJoystick = cannon;
     }
+
+
+    public void SetWallHealthBar(HealthBar wallBar)
+    {
+        _wallHealthBar = wallBar;
+    }
+
+    public void SetWallMaxHealth(int maxHealth)
+    {
+        _wallHealthBar.SetMaxHealth(maxHealth);
+    }
+
+    public void SetWallCurrentHealth(int maxHealth)
+    {
+        _wallHealthBar.SetCurrentHealth(maxHealth);
+    }
+
 
     #endregion
 }

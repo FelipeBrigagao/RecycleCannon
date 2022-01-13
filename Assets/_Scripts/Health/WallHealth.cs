@@ -11,6 +11,7 @@ public class WallHealth : HealthBase
     protected override void Start()
     {
         base.Start();
+        UIManager.Instance.SetWallMaxHealth(_maxHealth);
     }
     #endregion
 
@@ -18,10 +19,14 @@ public class WallHealth : HealthBase
     protected override void HurtReaction()
     {
         base.HurtReaction();
-        Debug.Log("Wall hitted");
-
-        //tira vida da ui
+        UIManager.Instance.SetWallCurrentHealth(_currentHealth);
         //faz som de batida num muro
+    }
+
+    public override void Heal(int healingTaken)
+    {
+        base.Heal(healingTaken);
+        UIManager.Instance.SetWallCurrentHealth(_currentHealth);
     }
 
     protected override void Die()

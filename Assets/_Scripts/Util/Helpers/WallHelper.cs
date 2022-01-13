@@ -13,4 +13,5 @@ public class WallHelper : MonoBehaviour
     {
         WallManager.Instance.SetCurrentWall(this.gameObject);
     }
+
 }
