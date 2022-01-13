@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collector
   - Enemy
+  - Wall
+  - EnemyHittable
   layers:
   - Default
   - TransparentFX
@@ -19,9 +21,9 @@ TagManager:
   - Enemy
   - Collector
   - Wall
-  - 
-  - 
-  - 
+  - Bullet
+  - Cannon
+  - GarbageCollector
   - 
   - 
   - 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6077888375168759298}
   - component: {fileID: 7393030743003774813}
   - component: {fileID: 7059775721670209094}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8793239810686937229}
   - component: {fileID: 3261940296910719675}
   - component: {fileID: 2868305046837974346}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletOrganicBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c70b6a1c5ae434dac2fa09db753a18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ammoInfo: {fileID: 11400000, guid: 29fb6cd0b5e78284ab34dca64dbb965e, type: 2}
+  _bulletInfo: {fileID: 11400000, guid: c8ee99a9e19d60a4b9adefe2593ca9bd, type: 2}
   _rigidbody: {fileID: 0}
-  _enemyTag: Enemy
+  _enemyTag: EnemyHittable

@@ -12,6 +12,10 @@ public class CollectorHeartsUI : MonoBehaviour
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        UIManager.Instance.SetCollectorHearts(this);
+    }
     #endregion
 
     #region Methods

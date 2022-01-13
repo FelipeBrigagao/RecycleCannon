@@ -17,8 +17,9 @@ public class CannonInput : MonoBehaviour
     #endregion
 
     #region Unity Methods
-    private void Start()
+    private void Awake()
     {
+        _joyStick = UIManager.Instance._moveCannonJoystick;
         _cannonMovement = GetComponent<CannonMovement>();
     }
     private void Update()

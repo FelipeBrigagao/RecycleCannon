@@ -7,7 +7,6 @@ public class CollectorHealth : HealthBase
     #region Variables
     [Header("Collector references")]
     [SerializeField] private SO_CollectorStats _collectorStats;
-    [SerializeField] private CollectorHeartsUI _heartsUI;
 
     #endregion
 
@@ -16,7 +15,7 @@ public class CollectorHealth : HealthBase
     {
         _maxHealth = _collectorStats.maxHealth;
         base.Start();
-        _heartsUI.SetCollectorHearts(_currentHealth);
+        UIManager.Instance.SetCollectorInitialHealthUI(_maxHealth);
     }
     #endregion
 
@@ -24,13 +23,13 @@ public class CollectorHealth : HealthBase
     protected override void HurtReaction()
     {
         base.HurtReaction();
-        _heartsUI.UpdateHealthUI(_currentHealth);
+        UIManager.Instance.UpdateCollectorHealthUI(_currentHealth);
 
     }
     public override void Heal(int healingTaken)
     {
         base.Heal(healingTaken);
-        _heartsUI.UpdateHealthUI(_currentHealth);
+        UIManager.Instance.UpdateCollectorHealthUI(_currentHealth);
     }
 
     protected override void Die()

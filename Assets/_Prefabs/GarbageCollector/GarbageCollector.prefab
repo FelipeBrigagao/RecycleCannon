@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!224 &6358109426687883144
 RectTransform:
@@ -87,12 +87,12 @@ GameObject:
   - component: {fileID: 1373293438237031314}
   - component: {fileID: 3776276465796513109}
   - component: {fileID: 4739366613310016978}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: GarbageCollectorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1378159284694037194
 Transform:
@@ -188,7 +188,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &1575880967691859472
 RectTransform:
@@ -207,7 +207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.028, y: 1.04}
+  m_AnchoredPosition: {x: 0, y: 0.46}
   m_SizeDelta: {x: 832.19, y: 1422.7272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6846172727197506692
@@ -301,7 +301,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1261675720216606834
 Transform:
@@ -334,6 +334,7 @@ MonoBehaviour:
   _interactionIcon: {fileID: 2074121605217211506}
   _interactionTag: Collector
   _collectorType: 0
+  _carrying: {fileID: 0}
 --- !u!54 &1617923184340468548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,5 +362,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.8460093, y: 1, z: 2.1141243}
+  m_Size: {x: 2.8460093, y: 1, z: 3.061862}
   m_Center: {x: 0.9230046, y: 0.5, z: 0.0033130646}

@@ -11,9 +11,13 @@ PrefabInstance:
       propertyPath: _ammoInfo
       value: 
       objectReference: {fileID: 11400000, guid: 45f8e564e5ead9b41a56a04b099fce6b, type: 2}
+    - target: {fileID: 2868305046837974346, guid: f35fc423cca685d41b752eb2150345f5, type: 3}
+      propertyPath: _bulletInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: b94ba2be91658884581073960b2df049, type: 2}
     - target: {fileID: 5768046107092677283, guid: f35fc423cca685d41b752eb2150345f5, type: 3}
       propertyPath: m_Name
-      value: BulletBase (1)
+      value: BulletPlasticBase
       objectReference: {fileID: 0}
     - target: {fileID: 6769918362370751972, guid: f35fc423cca685d41b752eb2150345f5, type: 3}
       propertyPath: m_RootOrder

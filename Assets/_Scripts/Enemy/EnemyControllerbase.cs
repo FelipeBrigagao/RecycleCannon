@@ -14,6 +14,8 @@ public class EnemyControllerBase : MonoBehaviour
     [SerializeField] protected Transform _wallAttackPoint;
     [SerializeField] protected LayerMask _wallLayer;
 
+    protected float _nextTimeToAttack;
+
     protected NavMeshAgent _enemyAgent;
 
     protected bool _canMove;
@@ -34,14 +36,14 @@ public class EnemyControllerBase : MonoBehaviour
         _enemyHealth.OnEnemyDeath -= StopEnemy;
 
     }
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         _canMove = true;
         _destination = _wallAttackPoint.gameObject;
-        _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth = GetComponentInChildren<EnemyHealth>();
         _enemyAgent = GetComponent<NavMeshAgent>();
         _enemyAgent.speed = _enemyStats.speed;
-        _enemyAgent.stoppingDistance = _enemyStats.stopDistance;
+        _enemyAgent.stoppingDistance = _enemyStats.wallStopDistance;
     }
 
     
@@ -61,6 +63,12 @@ public class EnemyControllerBase : MonoBehaviour
         if (_destination != null)
         {
             _enemyAgent.SetDestination(_destination.transform.position);
+
+            if (_enemyAgent.velocity.magnitude < 0.01)
+            {
+                transform.LookAt(_destination.transform);
+            }
+
         }
     }
 

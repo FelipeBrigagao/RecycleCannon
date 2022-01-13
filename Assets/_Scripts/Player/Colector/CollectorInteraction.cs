@@ -19,7 +19,7 @@ public class CollectorInteraction : MonoBehaviour
         if (CollectorManager.Instance.canMove && !GameManager.Instance.gameIsOver)
         {
             RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _collectorStats.interactionBoxOffset, _collectorStats.interactionBoxSize / 2, 
-                transform.forward, Quaternion.identity, _collectorStats.interactionBoxSize.z);
+                transform.forward, Quaternion.identity, _collectorStats.interactionBoxSize.z/2);
         
             if(interactions.Length > 0)
             {

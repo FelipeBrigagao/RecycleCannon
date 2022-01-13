@@ -26,7 +26,7 @@ public class TrashDropEffect : MonoBehaviour
     }
     private void Awake()
     {
-        _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyHealth = GetComponentInChildren<EnemyHealth>();
         StartCoroutine(WalkingTrashDrop());
     }
     #endregion

@@ -19,6 +19,9 @@ public class CannonShoot : MonoBehaviour
     #region Methods
     public void Shoot()
     {
+        if (GameManager.Instance.gameIsOver)
+            return;
+
         if(_shots > 0 && Time.time >=_nextShot)
         {
             Instantiate(_ammo.bulletPrefab, _shootPosition.position, Quaternion.LookRotation(transform.forward));

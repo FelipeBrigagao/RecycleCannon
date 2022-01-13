@@ -7,13 +7,16 @@ public class SO_Enemy : ScriptableObject
 {
     public int maxHealth;
     public float speed;
-    public float stopDistance;
+    public float enemyStopDistance;
+    public float wallStopDistance;
     public TrashType enemyTrashType;
     public float spawnTime;
 
     public float attackRange;
+    public Vector3 attackAreaOffset;
     public int damage;
-    public float attackDuration;
+    public float collectorAttackDuration;
+    public float wallAttackRate;
 
     public SO_Trash smallTrashDrop;
     public SO_Trash largeTrashDrop;

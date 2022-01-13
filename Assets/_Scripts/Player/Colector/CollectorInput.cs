@@ -19,6 +19,7 @@ public class CollectorInput : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
+        _joyStick = UIManager.Instance._moveCollectorJoystick;
         _movement = GetComponent<CollectorMovementBase>();
     }
     private void Update()

@@ -16,12 +16,13 @@ public class EnemyController : EnemyControllerBase
     #endregion
 
     #region Unity Methods
-    protected override void Start()
+    protected override void Awake()
     {
+        _nextTimeToAttack = 0;
         _wallAttackPoint = WallManager.Instance.GetWallAttackPoint();
         _currentCollector = CollectorManager.Instance._currentCollector;
         _currentWall = WallManager.Instance.currentWall;
-        base.Start();
+        base.Awake();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,6 +30,7 @@ public class EnemyController : EnemyControllerBase
         if (other.CompareTag(_collectorTag))
         {
             _destination = _currentCollector;
+            _enemyAgent.stoppingDistance = _enemyStats.enemyStopDistance;
         }
     }
 
@@ -37,6 +39,7 @@ public class EnemyController : EnemyControllerBase
         if (other.CompareTag(_collectorTag))
         {
             _destination = _wallAttackPoint.gameObject;
+            _enemyAgent.stoppingDistance = _enemyStats.wallStopDistance;
         }
     }
 
@@ -52,7 +55,7 @@ public class EnemyController : EnemyControllerBase
     {
         base.CheckAttack();
 
-        if (Physics.CheckSphere(transform.position, _enemyStats.attackRange, _playerLayer) && !CollectorManager.Instance.collectorIsInvulnerable)
+        if (Physics.CheckSphere(transform.localPosition + transform.forward * _enemyStats.attackAreaOffset.z, _enemyStats.attackRange, _playerLayer) && !CollectorManager.Instance.collectorIsInvulnerable)
         {
             HealthBase health = _currentCollector.GetComponent<HealthBase>();
 
@@ -61,12 +64,13 @@ public class EnemyController : EnemyControllerBase
                 StartCoroutine(EatAndSpitCollector(health));
             }
 
-        }else if (Physics.CheckSphere(transform.position, _enemyStats.attackRange, _wallLayer))
+        }else if (Physics.CheckSphere(transform.localPosition + transform.forward * _enemyStats.attackAreaOffset.z, _enemyStats.attackRange, _wallLayer) && Time.time >= _nextTimeToAttack )
         {
             HealthBase health = _currentWall.GetComponent<HealthBase>();
 
             if (health)
             {
+                _nextTimeToAttack = Time.time + _enemyStats.wallAttackRate;
                 health.TakeDamage(_enemyStats.damage);
             }
         }
@@ -81,10 +85,10 @@ public class EnemyController : EnemyControllerBase
     {
         _canMove = false;
         _enemyAgent.velocity = Vector3.zero;
-        _currentCollector.GetComponent<CollectorMovementBase>().CollectorBeingAttacked(_enemyStats.attackDuration);
+        _currentCollector.GetComponent<CollectorMovementBase>().CollectorBeingAttacked(_enemyStats.collectorAttackDuration);
         _currentCollector.transform.position = _eatPoint.position;
         health.TakeDamage(_enemyStats.damage);
-        yield return new WaitForSeconds(_enemyStats.attackDuration);
+        yield return new WaitForSeconds(_enemyStats.collectorAttackDuration);
         if (!CollectorManager.Instance.isDead)
         {
             _currentCollector.transform.position = _spitPoint.position;
@@ -93,6 +97,10 @@ public class EnemyController : EnemyControllerBase
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + transform.forward*_enemyStats.attackAreaOffset.z,  _enemyStats.attackRange);
+    }
 
     #endregion
 }

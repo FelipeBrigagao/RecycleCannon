@@ -10,6 +10,7 @@ public class HealthBase : MonoBehaviour
     protected int _currentHealth;
 
     [SerializeField] private bool _destroyOnDeath;
+    [SerializeField] private GameObject _mainGameObject;
     protected bool _isDead;
     #endregion
 
@@ -65,7 +66,7 @@ public class HealthBase : MonoBehaviour
         _isDead = true;
         if (_destroyOnDeath)
         {
-            Destroy(this.gameObject);
+            Destroy(_mainGameObject);
         }
     }
 
