@@ -8,38 +8,18 @@ public class CollectorCarrying : MonoBehaviour
     [Header("Carrying references")]
     [SerializeField] private Transform _carryingPoint;
     [SerializeField] private Transform _dropingPoint;
+    public SO_Trash _currentTrashCarrying { get; private set; }
 
     private GameObject _trashCarryingUI;
-
-    private CollectorManager _collectorManager;
     #endregion
 
     #region Unity Methods
-    private void Awake()
-    {
-        _collectorManager = CollectorManager.Instance;
-    }
-
-
-    private void OnEnable()
-    {
-        _collectorManager.OnStartCarrying += StartCarrying;
-        _collectorManager.OnDropTrash += DropTrash;
-        _collectorManager.OnStopCarrying += StopCarrying;
-    }
-
-    private void OnDisable()
-    {
-        _collectorManager.OnStartCarrying -= StartCarrying;
-        _collectorManager.OnDropTrash -= DropTrash;
-        _collectorManager.OnStopCarrying -= StopCarrying;
-    }
     #endregion
 
     #region Methods
     private void StartCarrying()
     {
-        _trashCarryingUI = Instantiate(_collectorManager._currentTrashCarrying.carryingPrefab, _carryingPoint.position, Quaternion.LookRotation(transform.forward), _carryingPoint);
+        _trashCarryingUI = Instantiate(_currentTrashCarrying.carryingPrefab, _carryingPoint.position, Quaternion.LookRotation(transform.forward), _carryingPoint);
     }
 
     private void StopCarrying()
@@ -51,7 +31,29 @@ public class CollectorCarrying : MonoBehaviour
     private void DropTrash()
     {
         StopCarrying();
-        Instantiate(_collectorManager._currentTrashCarrying.interactablePrefab, _dropingPoint.position, Quaternion.identity);
+        Instantiate(_currentTrashCarrying.interactablePrefab, _dropingPoint.position, Quaternion.identity);
+    }
+
+    public void SetCarryingTrash(SO_Trash trash)
+    {
+        if (_currentTrashCarrying == null)
+        {
+            _currentTrashCarrying = trash;
+            StartCarrying();
+
+        }
+        else
+        {
+            DropTrash();
+            _currentTrashCarrying = trash;
+            StartCarrying();
+        }
+    }
+
+    public void DisposeTrash()
+    {
+        StopCarrying();
+        _currentTrashCarrying = null;
     }
 
     #endregion

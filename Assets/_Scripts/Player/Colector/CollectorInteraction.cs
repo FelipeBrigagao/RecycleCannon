@@ -6,8 +6,8 @@ public class CollectorInteraction : MonoBehaviour
 {
     #region Variables
     [Header("Interaction Values")]
-    [SerializeField] private Vector3 _interactionBoxSize;
-    [SerializeField] private Vector3 _interactionBoxOffset;
+    [SerializeField] private SO_CollectorStats _collectorStats;
+
     #endregion
 
     #region Unity Methods
@@ -18,7 +18,8 @@ public class CollectorInteraction : MonoBehaviour
     {
         if (CollectorManager.Instance.canMove && !GameManager.Instance.gameIsOver)
         {
-            RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _interactionBoxOffset, _interactionBoxSize / 2, transform.forward, Quaternion.identity, _interactionBoxSize.z);
+            RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _collectorStats.interactionBoxOffset, _collectorStats.interactionBoxSize / 2, 
+                transform.forward, Quaternion.identity, _collectorStats.interactionBoxSize.z);
         
             if(interactions.Length > 0)
             {
@@ -40,7 +41,7 @@ public class CollectorInteraction : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position + _interactionBoxOffset, _interactionBoxSize);
+        Gizmos.DrawWireCube(transform.position + _collectorStats.interactionBoxOffset, _collectorStats.interactionBoxSize);
     }
     #endregion
 }

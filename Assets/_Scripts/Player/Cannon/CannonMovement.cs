@@ -14,6 +14,9 @@ public class CannonMovement : MonoBehaviour
     #region Unity Methods
     private void FixedUpdate()
     {
+        if (GameManager.Instance.gameIsOver)
+            return;
+
         Move();
     }
 

@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5809411902721109782}
+  _collider: {fileID: 5809411902721109780}
   _collectorStats: {fileID: 11400000, guid: 0da7bea633045664a82b5afd16cd94ea, type: 2}
   _camera: {fileID: 0}
 --- !u!114 &7020408794232923874
@@ -578,8 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41b8114e01ce3c44a99507ae355039d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionBoxSize: {x: 2, y: 2, z: 2}
-  _interactionBoxOffset: {x: 0, y: 1, z: 1}
+  _collectorStats: {fileID: 11400000, guid: 0da7bea633045664a82b5afd16cd94ea, type: 2}
 --- !u!114 &303452173
 MonoBehaviour:
   m_ObjectHideFlags: 0

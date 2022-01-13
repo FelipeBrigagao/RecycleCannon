@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private EnemyHealth _enemyHealth;
     [Header("Enemy attack references")]
     [SerializeField] private GameObject _currentCollector;
-    [SerializeField] private GameObject _currentWall;
+    [SerializeField] private Transform _wallAttackPoint;
     [SerializeField] private string _collectorTag;
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private Transform _eatPoint;
@@ -41,6 +41,8 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         _canMove = true;
+        WallManager.Instance.GetWallAttackPoint();
+        _destination = _wallAttackPoint.gameObject;
         _currentCollector = CollectorManager.Instance._currentCollector;
         _enemyAgent = GetComponent<NavMeshAgent>();
         _enemyAgent.speed = _enemyStats.speed;
@@ -57,11 +59,10 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       /* if (other.CompareTag(_collectorTag))
+        if (other.CompareTag(_collectorTag))
         {
-            _destination = _currentWall;
+            _destination = _wallAttackPoint.gameObject;
         }
-       */
     }
 
     private void FixedUpdate()
@@ -107,7 +108,7 @@ public class EnemyController : MonoBehaviour
     {
         _canMove = false;
         _enemyAgent.velocity = Vector3.zero;
-        CollectorManager.Instance.CollectorBeingAttacked(_enemyStats.attackDuration);
+        _currentCollector.GetComponent<CollectorMovementBase>().CollectorBeingAttacked(_enemyStats.attackDuration);
         _currentCollector.transform.position = _eatPoint.position;
         colectorHealth.TakeDamage(_enemyStats.damage);
         yield return new WaitForSeconds(_enemyStats.attackDuration);

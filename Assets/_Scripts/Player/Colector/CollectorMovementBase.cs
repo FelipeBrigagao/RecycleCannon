@@ -7,6 +7,7 @@ public class CollectorMovementBase : MonoBehaviour
     #region Variables
     [Header("Collector references")]
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private Collider _collider;
     [SerializeField] private SO_CollectorStats _collectorStats;
 
     [Header("Movement References")]
@@ -22,6 +23,7 @@ public class CollectorMovementBase : MonoBehaviour
     {
         _camera = Camera.main.transform;
         _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
 
     private void FixedUpdate()
@@ -55,6 +57,32 @@ public class CollectorMovementBase : MonoBehaviour
     {
         Quaternion smoothedRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_direction, Vector3.up), _collectorStats.turnDamp * Time.deltaTime);
         _rigidbody.MoveRotation(smoothedRotation);
+
+    }
+
+    public void CollectorBeingAttacked(float attackDuration)
+    {
+        StartCoroutine(InvulnerabilityCountdown(attackDuration));
+    }
+
+    IEnumerator InvulnerabilityCountdown(float duration)
+    {
+        _collider.isTrigger = true;
+        _rigidbody.isKinematic = true;
+        GetComponent<CollectorCarrying>().DisposeTrash();
+        CollectorManager.Instance.CollectorCanMove(false);
+        CollectorManager.Instance.CollectorInvulnerable(true);
+
+        yield return new WaitForSeconds(duration);
+        if (!CollectorManager.Instance.isDead)
+        {
+            _collider.isTrigger = false;
+            _rigidbody.isKinematic = false;
+            CollectorManager.Instance.CollectorCanMove(true);
+            yield return new WaitForSeconds(duration);
+            CollectorManager.Instance.CollectorInvulnerable(false);
+
+        }
 
     }
 

@@ -6,7 +6,6 @@ using UnityEngine;
 public class CollectorManager : SingletonBase<CollectorManager>
 {
     #region Variables
-    public SO_Trash _currentTrashCarrying { get; private set;}
     public GameObject _currentCollector { get; private set; }
     public bool collectorIsInvulnerable { get; private set;}
     public bool canMove { get; private set;}
@@ -24,26 +23,6 @@ public class CollectorManager : SingletonBase<CollectorManager>
         OnCollectorDeath?.Invoke();
     }
 
-    public event Action OnStartCarrying;
-
-    public void StartCarrying()
-    {
-        OnStartCarrying?.Invoke();
-    }
-
-    public event Action OnDropTrash;
-
-    public void DropTrash()
-    {
-        OnDropTrash?.Invoke();
-    }
-
-    public event Action OnStopCarrying;
-
-    public void StopCarrying()
-    {
-        OnStopCarrying?.Invoke();
-    }
     #endregion
 
     #region Unity Methods
@@ -63,53 +42,17 @@ public class CollectorManager : SingletonBase<CollectorManager>
         _currentCollector = currentCollector;
     }
 
-    public void SetCarryingTrash(SO_Trash trash)
+   
+    public void CollectorCanMove(bool canMove)
     {
-        if(_currentTrashCarrying == null)
-        {
-            _currentTrashCarrying = trash;
-            StartCarrying();
-
-        }else
-        {
-            DropTrash();
-            _currentTrashCarrying = trash;
-            StartCarrying();
-        }
-    }
-    
-    public void DisposeTrash()
-    {
-        StopCarrying();
-        _currentTrashCarrying = null;
+        this.canMove = canMove;
     }
 
-    public void CollectorBeingAttacked(float attackDuration)
+    public void CollectorInvulnerable(bool invulnerable)
     {
-        StartCoroutine(InvulnerabilityCountdown(attackDuration));
+        collectorIsInvulnerable = invulnerable;
     }
-    IEnumerator InvulnerabilityCountdown(float duration)
-    {
-        DisposeTrash();
-        Rigidbody rb = _currentCollector.GetComponent<Rigidbody>();
-        Collider collider = _currentCollector.GetComponent<Collider>();
-        collider.isTrigger = true;
-        rb.isKinematic = true;
-        canMove = false;
-        collectorIsInvulnerable = true;
 
-        yield return new WaitForSeconds(duration);
-        if (!CollectorManager.Instance.isDead)
-        {
-            collider.isTrigger = false;
-            rb.isKinematic = false;
-            canMove = true; 
-            yield return new WaitForSeconds(duration);
-            collectorIsInvulnerable = false;
-
-        }
-
-    }
 
     #endregion
 }

@@ -6,20 +6,26 @@ public class GarbageCollectorInteractable : Interactable
 {
     #region Variables
     [SerializeField] private TrashType _collectorType;
+    [SerializeField] private CollectorCarrying _carrying;
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        _carrying = CollectorManager.Instance._currentCollector.GetComponent<CollectorCarrying>();
+    }
     #endregion
 
     #region Methods
     public override void Interact()
     {
-        if(CollectorManager.Instance._currentTrashCarrying != null)
+        if(_carrying._currentTrashCarrying != null)
         {
-            if(CollectorManager.Instance._currentTrashCarrying.trashType == _collectorType)
+            if(_carrying._currentTrashCarrying.trashType == _collectorType)
             {
-                CannonManager.Instance.ReloadCannon(CollectorManager.Instance._currentTrashCarrying);
-                CollectorManager.Instance.DisposeTrash();
+                CannonShoot cannonShoot = CannonManager.Instance._currentCannon.GetComponent<CannonShoot>();
+                cannonShoot?.ReloadCannon(_carrying._currentTrashCarrying.ammo);
+                _carrying.DisposeTrash();
             }
             else
             {

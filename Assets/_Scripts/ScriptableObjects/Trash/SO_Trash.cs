@@ -19,7 +19,8 @@ public enum TrashType
 {
     ORGANIC,
     METAL,
-    PLASTIC
+    PLASTIC,
+    ALL
 }
 
 public enum TrashSize

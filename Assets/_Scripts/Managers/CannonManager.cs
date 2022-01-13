@@ -6,26 +6,19 @@ using UnityEngine;
 public class CannonManager : SingletonBase<CannonManager>
 {
     #region Variables
+    public GameObject _currentCannon { get; private set; }
     #endregion
 
     #region Events
-    public event Action<SO_Ammo> OnReload;
-
-    public void Reload(SO_Ammo ammo)
-    {
-        OnReload?.Invoke(ammo);
-    }
     #endregion
 
     #region Unity Methods
     #endregion
 
     #region Methods
-    public void ReloadCannon(SO_Trash trash)
+    public void SetCurrentCannon(GameObject currentCannon)
     {
-        Reload(trash.ammo);
-        //alterar as coisas do uimanager, quantide de tiros e tipo de tiro
+        _currentCannon = currentCannon;
     }
-
     #endregion
 }

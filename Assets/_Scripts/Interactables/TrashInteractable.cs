@@ -14,7 +14,8 @@ public class TrashInteractable : Interactable
     #region Methods
     public override void Interact()
     {
-        CollectorManager.Instance.SetCarryingTrash(trashInfo);
+        CollectorCarrying collectorCarrying = CollectorManager.Instance._currentCollector.GetComponent<CollectorCarrying>();
+        collectorCarrying?.SetCarryingTrash(trashInfo);
         Destroy(gameObject);
     }
     #endregion

@@ -14,14 +14,6 @@ public class CannonShoot : MonoBehaviour
     #endregion
 
     #region Unity Methods
-    private void OnEnable()
-    {
-        CannonManager.Instance.OnReload += ReloadCannon;
-    }
-    private void OnDisable()
-    {
-        CannonManager.Instance.OnReload -= ReloadCannon;
-    }
     #endregion
 
     #region Methods

@@ -2303,10 +2303,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3657883437934667026, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
-      propertyPath: m_AutoBraking
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3657883437934667038, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
       propertyPath: m_Name
       value: OrganicEnemy
