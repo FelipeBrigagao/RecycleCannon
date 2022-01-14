@@ -6,6 +6,7 @@ using UnityEngine;
 public class CannonManager : SingletonBase<CannonManager>
 {
     #region Variables
+    [SerializeField] private GameObject _cannonPrefab;
     public GameObject _currentCannon { get; private set; }
     #endregion
 
@@ -16,9 +17,14 @@ public class CannonManager : SingletonBase<CannonManager>
     #endregion
 
     #region Methods
-    public void SetCurrentCannon(GameObject currentCannon)
+    public void SetCannonPrefab(GameObject cannonPrefab)
     {
-        _currentCannon = currentCannon;
+        _cannonPrefab = cannonPrefab;
+    }
+
+    public void InitiateCannon()
+    {
+        _currentCannon = SpawnManager.Instance.SpawnCannon(_cannonPrefab);
     }
     #endregion
 }

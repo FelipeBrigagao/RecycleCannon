@@ -11,7 +11,6 @@ public class SO_Trash : ScriptableObject
     public GameObject interactablePrefab;
     public GameObject carryingPrefab;
     public TrashSize trashSize;
-    public Sprite trashIcon;
     public SO_Ammo ammo;
 
 }

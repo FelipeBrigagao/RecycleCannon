@@ -6,6 +6,7 @@ using UnityEngine;
 public class CollectorManager : SingletonBase<CollectorManager>
 {
     #region Variables
+    [SerializeField] private GameObject _collectorPrefab;
     public GameObject _currentCollector { get; private set; }
     public bool collectorIsInvulnerable { get; private set;}
     public bool canMove { get; private set;}
@@ -37,9 +38,14 @@ public class CollectorManager : SingletonBase<CollectorManager>
 
     #region Methods
 
-    public void SetCurrentCollector(GameObject currentCollector)
+    public void SetCollectorPrefab(GameObject collector)
     {
-        _currentCollector = currentCollector;
+        _collectorPrefab = collector;
+    }
+
+    public void InitiateCollector()
+    {
+        _currentCollector = SpawnManager.Instance.SpawnCollector(_collectorPrefab);
     }
 
    

@@ -36,7 +36,9 @@ public class GameManager : SingletonBase<GameManager>
 
     public void StartPhase()
     {
-
+        CollectorManager.Instance.InitiateCollector();
+        CannonManager.Instance.InitiateCannon();
+        //iniciar wave
     }
 
     public void RestartPhase()

@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 7020408794232923874}
   - component: {fileID: 1987834977121396428}
   - component: {fileID: 303452173}
-  - component: {fileID: 2965980282965845591}
   m_Layer: 10
   m_Name: CollectorPrototype
   m_TagString: Collector
@@ -204,19 +203,6 @@ MonoBehaviour:
   _destroyOnDeath: 1
   _mainGameObject: {fileID: 5809411902721109770}
   _collectorStats: {fileID: 11400000, guid: 0da7bea633045664a82b5afd16cd94ea, type: 2}
-  _heartsUI: {fileID: 0}
---- !u!114 &2965980282965845591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5809411902721109770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db1ff19bd032e41a409a54d8a12820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5809411903058155170
 GameObject:
   m_ObjectHideFlags: 0
