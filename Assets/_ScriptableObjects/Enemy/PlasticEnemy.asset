@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914e48a768192174baf6eec0a8608836, type: 3}
+  m_Name: PlasticEnemy
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6347103145803194541, guid: b82f22c7ac6f8cf4dbe868b3b958b4bf, type: 3}
+  maxHealth: 3
+  speed: 1
+  enemyStopDistance: 3
+  wallStopDistance: 1.67
+  enemyTrashType: 2
+  spawnTime: 10
+  attackRange: 2
+  attackAreaOffset: {x: 0, y: 0, z: 0.5}
+  damage: 1
+  collectorAttackDuration: 2
+  wallAttackRate: 1
+  smallTrashDrop: {fileID: 11400000, guid: f3acab858fd292548bf25293e92d851a, type: 2}
+  largeTrashDrop: {fileID: 11400000, guid: d7cef6233c1615e4096a68a95c9e0447, type: 2}
+  dropTime: 7
+  largeDropPossibility: 20
+  deathDropAmount: 2

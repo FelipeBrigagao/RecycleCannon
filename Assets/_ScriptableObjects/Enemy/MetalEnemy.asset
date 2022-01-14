@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914e48a768192174baf6eec0a8608836, type: 3}
+  m_Name: MetalEnemy
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 8237821715574789828, guid: 340084981b5a3e541a41d664102f902c, type: 3}
+  maxHealth: 3
+  speed: 1
+  enemyStopDistance: 3
+  wallStopDistance: 1.67
+  enemyTrashType: 1
+  spawnTime: 10
+  attackRange: 2
+  attackAreaOffset: {x: 0, y: 0, z: 0.5}
+  damage: 1
+  collectorAttackDuration: 2
+  wallAttackRate: 1
+  smallTrashDrop: {fileID: 11400000, guid: 8578f9f3554d526429d507a5a753585e, type: 2}
+  largeTrashDrop: {fileID: 11400000, guid: 460a41020ff956945b5a01a2c4835bb0, type: 2}
+  dropTime: 7
+  largeDropPossibility: 20
+  deathDropAmount: 2

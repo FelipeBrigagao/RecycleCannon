@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be70d8e89793f043981024ffd53912f, type: 3}
+  m_Name: LargeAmmoMetalBase
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4811665934120793521, guid: 4651636dd51f7ef44bafce405b0adfef, type: 3}
+  ammoAmount: 5
+  ammoTypeIcon: {fileID: -542816790347558067, guid: 3e957c00caf61ac4cba05a3e1d2890cc, type: 3}

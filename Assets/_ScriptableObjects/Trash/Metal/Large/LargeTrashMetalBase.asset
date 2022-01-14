@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7692a0659d88f3d49bd983418c1b950a, type: 3}
+  m_Name: LargeTrashMetalBase
+  m_EditorClassIdentifier: 
+  trashType: 1
+  interactablePrefab: {fileID: 6022854545361207853, guid: 31f4cad7b41dc1246b89e1eafec8306d, type: 3}
+  carryingPrefab: {fileID: 1239965542430722936, guid: 5547707d12b484e44a4f299a854db11a, type: 3}
+  trashSize: 1
+  ammo: {fileID: 11400000, guid: 05c40e51d800e2d45abcefdd2d523442, type: 2}

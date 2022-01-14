@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Collector
+  - Enemy
+  - Wall
+  - EnemyHittable
   layers:
   - Default
   - TransparentFX
@@ -11,15 +15,15 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - GroundCollider
+  - Trash
+  - Enemy
+  - Collector
+  - Wall
+  - Bullet
+  - Cannon
+  - GarbageCollector
   - 
   - 
   - 
