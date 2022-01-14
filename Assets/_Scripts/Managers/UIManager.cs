@@ -14,6 +14,7 @@ public class UIManager : SingletonBase<UIManager>
     private WaveUI _waveUI;
 
     private GameObject _gameOverScreen;
+    private GameObject _phaseWonScreen;
 
     #endregion
 
@@ -21,11 +22,13 @@ public class UIManager : SingletonBase<UIManager>
     private void OnEnable()
     {
         GameManager.Instance.OnGameOver += GameIsOver;
+        GameManager.Instance.OnPhaseWon += PhaseWon;
     }
 
     private void OnDisable()
     {
         GameManager.Instance.OnGameOver -= GameIsOver;
+        GameManager.Instance.OnPhaseWon -= PhaseWon;
     }
     #endregion
 
@@ -109,6 +112,21 @@ public class UIManager : SingletonBase<UIManager>
         _collectorHeartsUI.gameObject.SetActive(false);
         _ammoUI.gameObject.SetActive(false);
         _gameOverScreen.SetActive(true);
+    }
+
+    public void SetPhaseWonScreen(GameObject phaseWonScreen)
+    {
+        _phaseWonScreen = phaseWonScreen;
+    }
+
+    private void PhaseWon()
+    {
+        _moveCannonJoystick.gameObject.SetActive(false);
+        _moveCollectorJoystick.gameObject.SetActive(false);
+        _wallHealthBar.gameObject.SetActive(false);
+        _collectorHeartsUI.gameObject.SetActive(false);
+        _ammoUI.gameObject.SetActive(false);
+        _phaseWonScreen.SetActive(true);
     }
 
     #endregion

@@ -8,6 +8,7 @@ public class GameManager : SingletonBase<GameManager>
     #region Variables
     [SerializeField]private int _currentPhase;
     public bool gameIsOver { get; private set; }
+    public bool phaseWon { get; private set; }
     #endregion
 
     #region Events
@@ -24,6 +25,7 @@ public class GameManager : SingletonBase<GameManager>
     public void PhaseWon()
     {
         Debug.Log("Phase won!!!");
+        phaseWon = true;
         OnPhaseWon?.Invoke();
     }
     #endregion
@@ -44,6 +46,7 @@ public class GameManager : SingletonBase<GameManager>
 
     public void StartPhase()
     {
+        phaseWon = false;
         CollectorManager.Instance.InitiateCollector();
         CannonManager.Instance.InitiateCannon();
         WaveManager.Instance.InitiateWaves();
@@ -52,6 +55,11 @@ public class GameManager : SingletonBase<GameManager>
     public void RestartPhase()
     {
         ScenesManager.Instance.RestartCurrentPhase();
+    }
+
+    public void NextPhase()
+    {
+        ScenesManager.Instance.LoadNextPhase();
     }
 
     #endregion

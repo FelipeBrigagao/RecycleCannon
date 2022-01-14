@@ -16,7 +16,7 @@ public class CollectorInteraction : MonoBehaviour
     #region Methods
     public void CheckInteraction()
     {
-        if (CollectorManager.Instance.canMove && !GameManager.Instance.gameIsOver)
+        if (CollectorManager.Instance.canMove && (!GameManager.Instance.gameIsOver || !GameManager.Instance.phaseWon))
         {
             RaycastHit[] interactions = Physics.BoxCastAll(transform.position + _collectorStats.interactionBoxOffset, _collectorStats.interactionBoxSize / 2, 
                 transform.forward, Quaternion.identity, _collectorStats.interactionBoxSize.z/2);

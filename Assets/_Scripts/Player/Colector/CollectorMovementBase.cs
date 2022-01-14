@@ -28,7 +28,7 @@ public class CollectorMovementBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(CollectorManager.Instance.canMove && !GameManager.Instance.gameIsOver)
+        if(CollectorManager.Instance.canMove && (!GameManager.Instance.gameIsOver || !GameManager.Instance.phaseWon))
             Move();
     }
     #endregion

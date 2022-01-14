@@ -18,11 +18,13 @@ public class TrashDropEffect : MonoBehaviour
     {
         _enemyHealth.OnEnemyDeath += EnemyDied;
         GameManager.Instance.OnGameOver += GameEnded;
+        GameManager.Instance.OnPhaseWon += GameEnded;
     }
     private void OnDisable()
     {
         _enemyHealth.OnEnemyDeath -= EnemyDied;
         GameManager.Instance.OnGameOver -= GameEnded;
+        GameManager.Instance.OnPhaseWon -= GameEnded;
     }
     private void Awake()
     {

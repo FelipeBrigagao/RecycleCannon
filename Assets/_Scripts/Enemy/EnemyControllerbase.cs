@@ -26,6 +26,7 @@ public class EnemyControllerBase : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnGameOver += StopEnemy;
+        GameManager.Instance.OnPhaseWon += StopEnemy;
         _enemyHealth.OnEnemyDeath += StopEnemy;
 
     }
@@ -33,6 +34,7 @@ public class EnemyControllerBase : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.OnGameOver -= StopEnemy;
+        GameManager.Instance.OnPhaseWon -= StopEnemy;
         _enemyHealth.OnEnemyDeath -= StopEnemy;
 
     }

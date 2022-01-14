@@ -16,5 +16,17 @@ public class ScenesManager : SingletonBase<ScenesManager>
     {
         SceneManager.LoadScene(GameManager.Instance.GetCurrentPhase());
     }
+
+    public void LoadNextPhase()
+    {
+        Scene _nextScene;
+
+        _nextScene = SceneManager.GetSceneByBuildIndex(GameManager.Instance.GetCurrentPhase() + 1);
+
+        if (_nextScene != null)
+            SceneManager.LoadScene(GameManager.Instance.GetCurrentPhase() + 1);
+        else
+            Debug.Log("No more phases after this.");
+    }
     #endregion
 }

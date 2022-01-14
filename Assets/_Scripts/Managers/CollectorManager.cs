@@ -45,6 +45,7 @@ public class CollectorManager : SingletonBase<CollectorManager>
 
     public void InitiateCollector()
     {
+        canMove = true;
         _currentCollector = SpawnManager.Instance.SpawnCollector(_collectorPrefab);
     }
 

@@ -19,7 +19,7 @@ public class CannonShoot : MonoBehaviour
     #region Methods
     public void Shoot()
     {
-        if (GameManager.Instance.gameIsOver)
+        if (GameManager.Instance.gameIsOver || GameManager.Instance.phaseWon)
             return;
 
         if(_shots > 0 && Time.time >=_nextShot)
