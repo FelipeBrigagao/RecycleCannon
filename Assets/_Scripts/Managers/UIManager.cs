@@ -11,6 +11,7 @@ public class UIManager : SingletonBase<UIManager>
     private CollectorHeartsUI _collectorHeartsUI;
     private HealthBar _wallHealthBar;
     private IconUI _ammoUI;
+    private WaveUI _waveUI;
 
     private GameObject _gameOverScreen;
 
@@ -80,9 +81,19 @@ public class UIManager : SingletonBase<UIManager>
         _ammoUI.CleanIconUI();
     }
 
-    public void UpdateDescription(string description)
+    public void UpdateAmmoUIDescription(string description)
     {
         _ammoUI.UpdateDescription(description);
+    }
+
+    public void SetWaveUI(WaveUI waveUI)
+    {
+        _waveUI = waveUI;
+    }
+
+    public void ChangeWaveUITXT(string waveUITXT)
+    {
+        _waveUI.ChangeWave(waveUITXT);
     }
 
     public void SetGameOverScreen(GameObject gameOverScreen)

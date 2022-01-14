@@ -110,12 +110,12 @@ public class WaveManager : SingletonBase<WaveManager>
 
     IEnumerator StartWave()
     {
-        //UIManager.Instance.ChangeWaveUITXT($"Wave {_currentWave + 1}");
-
         if (_currentWave >= _waves.Length)
         {
             GameManager.Instance.PhaseWon();
         }
+
+        UIManager.Instance.ChangeWaveUITXT($"Wave {_currentWave + 1}");
 
         _countdownSpawnWave = _waves[_currentWave].waveDuration;
 
@@ -148,7 +148,7 @@ public class WaveManager : SingletonBase<WaveManager>
 
     private Vector3 GetARandomSpawnPosition()
     {
-        int index = Random.Range(0, _spawnsPosition.Length);
+        int index = UnityEngine.Random.Range(0, _spawnsPosition.Length);
         return _spawnsPosition[index];
     }
 

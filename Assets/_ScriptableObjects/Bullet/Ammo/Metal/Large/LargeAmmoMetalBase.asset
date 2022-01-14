@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4811665934120793521, guid: 4651636dd51f7ef44bafce405b0adfef, type: 3}
   ammoAmount: 5
-  ammoTypeIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  ammoTypeIcon: {fileID: -542816790347558067, guid: 3e957c00caf61ac4cba05a3e1d2890cc, type: 3}

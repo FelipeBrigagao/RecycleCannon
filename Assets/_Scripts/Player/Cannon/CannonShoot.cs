@@ -27,7 +27,7 @@ public class CannonShoot : MonoBehaviour
             Instantiate(_ammo.bulletPrefab, _shootPosition.position, Quaternion.LookRotation(transform.forward));
             _shots--;
             _nextShot = Time.time + _cannonStats.fireRate;
-            UIManager.Instance.UpdateDescription(_shots.ToString());
+            UIManager.Instance.UpdateAmmoUIDescription(_shots.ToString());
         }
         else
         {
