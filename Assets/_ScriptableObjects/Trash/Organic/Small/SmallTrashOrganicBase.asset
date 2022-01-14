@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: SmallTrashOrganicBase
   m_EditorClassIdentifier: 
   trashType: 0
-  interactablePrefab: {fileID: 6501285796611265933, guid: 3b9030ae74e0431448670c663c76f7ae, type: 3}
-  carryingPrefab: {fileID: 3395828985407921147, guid: 587382e2ecb08b544bc9e18023a5ff41, type: 3}
+  interactablePrefab: {fileID: 5388193871863120402, guid: 249078feaecf16a4ea9355189d92df88, type: 3}
+  carryingPrefab: {fileID: 5317828949101118194, guid: 66af0582c8a26b94faad962371c0e4ed, type: 3}
   trashSize: 0
-  trashIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   ammo: {fileID: 11400000, guid: 29fb6cd0b5e78284ab34dca64dbb965e, type: 2}
