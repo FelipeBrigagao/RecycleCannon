@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3657883437934667024, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.35
+      value: 6.55
       objectReference: {fileID: 0}
     - target: {fileID: 3657883437934667024, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71,5 +71,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlasticEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5055228102785264994, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c222e39af1b45c44a07ccd9d1ea11e7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb25061ee52c53643aa8c506bbf26152, type: 3}
