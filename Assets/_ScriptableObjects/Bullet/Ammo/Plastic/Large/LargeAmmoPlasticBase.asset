@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: LargeAmmoPlasticBase
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1992108318463447630, guid: 55211552a47230e45b80cc427ebb7443, type: 3}
-  bulletType: 2
-  bulletSpeed: 20
-  bulletMaxDistance: 50
-  bulletDamage: 1
   ammoAmount: 5
-  ammoTypeIcon: {fileID: 0}
+  ammoTypeIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

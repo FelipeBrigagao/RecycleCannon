@@ -27,18 +27,23 @@ public class CannonShoot : MonoBehaviour
             Instantiate(_ammo.bulletPrefab, _shootPosition.position, Quaternion.LookRotation(transform.forward));
             _shots--;
             _nextShot = Time.time + _cannonStats.fireRate;
-            //cada vez que atira atualiza o uimanager
+            UIManager.Instance.UpdateDescription(_shots.ToString());
         }
         else
         {
             Debug.Log($"Não atirou, \n nextShot:{_nextShot} \n time: {Time.time}");
         }
+
+        if (_shots == 0)
+            UIManager.Instance.ClearAmmoUI();
     }
 
     public void ReloadCannon(SO_Ammo ammo)
     {
         _ammo = ammo;
         _shots = ammo.ammoAmount;
+
+        UIManager.Instance.UpdateAmmoUI(_ammo.ammoTypeIcon, _shots.ToString());
     }
     #endregion
 }

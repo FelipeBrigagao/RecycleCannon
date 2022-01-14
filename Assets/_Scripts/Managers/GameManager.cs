@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : SingletonBase<GameManager>
 {
     #region Variables
+    [SerializeField]private int _currentPhase;
     public bool gameIsOver { get; private set; }
     #endregion
 
@@ -28,5 +29,20 @@ public class GameManager : SingletonBase<GameManager>
     #endregion
 
     #region Methods
+    public int GetCurrentPhase()
+    {
+        return _currentPhase;
+    }
+
+    public void StartPhase()
+    {
+
+    }
+
+    public void RestartPhase()
+    {
+        ScenesManager.Instance.RestartCurrentPhase();
+    }
+
     #endregion
 }
