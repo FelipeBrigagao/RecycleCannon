@@ -10,7 +10,7 @@ public class HealthBase : MonoBehaviour
     protected int _currentHealth;
 
     [SerializeField] private bool _destroyOnDeath;
-    [SerializeField] private GameObject _mainGameObject;
+    [SerializeField] protected GameObject _mainGameObject;
     protected bool _isDead;
     #endregion
 

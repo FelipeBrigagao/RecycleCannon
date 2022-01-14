@@ -18,6 +18,14 @@ public class GameManager : SingletonBase<GameManager>
         gameIsOver = true;
         OnGameOver?.Invoke();
     }
+
+    public event Action OnPhaseWon;
+
+    public void PhaseWon()
+    {
+        Debug.Log("Phase won!!!");
+        OnPhaseWon?.Invoke();
+    }
     #endregion
 
     #region Unity Methods
@@ -38,7 +46,7 @@ public class GameManager : SingletonBase<GameManager>
     {
         CollectorManager.Instance.InitiateCollector();
         CannonManager.Instance.InitiateCannon();
-        //iniciar wave
+        WaveManager.Instance.InitiateWaves();
     }
 
     public void RestartPhase()

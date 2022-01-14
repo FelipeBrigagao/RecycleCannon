@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class WaveManager : SingletonBase<WaveManager>
     [SerializeField] private float _timeBetweenWaves;
     [SerializeField] private int _startingWave;
     [SerializeField] private int _currentWave;
-    [SerializeField] private int _waveIndex;
 
     [SerializeField] private WavesStates _currentState;
 
@@ -24,15 +24,26 @@ public class WaveManager : SingletonBase<WaveManager>
 
     #endregion
 
+    #region Events
+    public event Action OnWaveEnd;
+
+    public void WaveEnded()
+    {
+        OnWaveEnd?.Invoke();
+    }
+    #endregion
+
     #region Unity Methods
     private void OnEnable()
     {
         GameManager.Instance.OnGameOver += StopSpawning;
+        GameManager.Instance.OnPhaseWon += StopSpawning;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.OnGameOver -= StopSpawning;
+        GameManager.Instance.OnPhaseWon -= StopSpawning;
     }
 
     private void Update()
@@ -61,6 +72,7 @@ public class WaveManager : SingletonBase<WaveManager>
 
                 if (_enemiesSpawned.Count == 0)
                 {
+                    WaveEnded();
                     _currentState = WavesStates.STARTING_WAVE;
                     Debug.Log("Entered starting wave state.");
                     _currentWave++;
@@ -102,14 +114,10 @@ public class WaveManager : SingletonBase<WaveManager>
 
         if (_currentWave >= _waves.Length)
         {
-            _waveIndex = _waves.Length - 1;
-        }
-        else
-        {
-            _waveIndex = _currentWave;
+            GameManager.Instance.PhaseWon();
         }
 
-        _countdownSpawnWave = _waves[_waveIndex].waveDuration;
+        _countdownSpawnWave = _waves[_currentWave].waveDuration;
 
         yield return new WaitForSeconds(_timeBetweenWaves);
 
@@ -117,7 +125,7 @@ public class WaveManager : SingletonBase<WaveManager>
 
         Debug.Log("Entered spawning state.");
 
-        foreach (var enemy in _waves[_waveIndex].enemiesToSpawn)
+        foreach (var enemy in _waves[_currentWave].enemiesToSpawn)
         {
             StartCoroutine(SpawnEnemy(enemy));
         }
@@ -125,30 +133,22 @@ public class WaveManager : SingletonBase<WaveManager>
     }
 
 
-    IEnumerator SpawnEnemy(GameObject enemyToSpawn)
+    IEnumerator SpawnEnemy(SO_Enemy enemyToSpawn)
     {
-        EnemySetup enemySetup = enemyToSpawn.GetComponent<EnemySetup>();
-
         GameObject enemySpawned;
-
-        yield return new WaitForSeconds(enemySetup._enemyStats.firstTimeToSpawn);
 
         while (_currentState == WavesStates.SPAWNING)
         {
-            enemySpawned = SpawnManager.Instance.SpawnEnemy(enemyToSpawn, GetARandomSpawnPosition());
-
+            yield return new WaitForSeconds(enemyToSpawn.spawnTime);
+            enemySpawned = SpawnManager.Instance.SpawnEnemy(enemyToSpawn.enemyPrefab, GetARandomSpawnPosition());
             _enemiesSpawned.Add(enemySpawned);
-
-            yield return new WaitForSeconds(enemySetup._enemyStats.timeToSpawn);
         }
-
     }
 
 
     private Vector3 GetARandomSpawnPosition()
     {
         int index = Random.Range(0, _spawnsPosition.Length);
-
         return _spawnsPosition[index];
     }
 

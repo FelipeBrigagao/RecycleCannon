@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914e48a768192174baf6eec0a8608836, type: 3}
   m_Name: PlasticEnemy
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 6347103145803194541, guid: b82f22c7ac6f8cf4dbe868b3b958b4bf, type: 3}
   maxHealth: 3
-  speed: 2
+  speed: 1
   enemyStopDistance: 3
-  wallStopDistance: 2
+  wallStopDistance: 1.67
   enemyTrashType: 2
-  spawnTime: 6
+  spawnTime: 10
   attackRange: 2
   attackAreaOffset: {x: 0, y: 0, z: 0.5}
   damage: 1

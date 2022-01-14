@@ -7,9 +7,6 @@ using UnityEngine;
 public class Wave
 {
     public string waveName;
-    public GameObject[] enemiesToSpawn;
+    public SO_Enemy[] enemiesToSpawn;
     public float waveDuration;
-
-    public Color waveLightColor;
-
 }

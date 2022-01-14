@@ -36,10 +36,10 @@ public class EnemyHealth : HealthBase
 
     protected override void Die()
     {
+        WaveManager.Instance.RemoveSpawnedEnemy(_mainGameObject);
         EnemyDied();
         base.Die();
     }
-
 
     #endregion
 }
