@@ -57,7 +57,6 @@ public class CollectorMovementBase : MonoBehaviour
     {
         Quaternion smoothedRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_direction, Vector3.up), _collectorStats.turnDamp * Time.deltaTime);
         _rigidbody.MoveRotation(smoothedRotation);
-
     }
 
     public void CollectorBeingAttacked(float attackDuration)
